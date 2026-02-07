@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Keshav ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #ff4f7b, #b3002d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+/* 💗 BACKGROUND BEATING HEART */
+.bg-heart {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  background: #ff6f91;
+  opacity: 0.18;
+  transform: rotate(-45deg);
+  animation: beat 2s infinite;
+  z-index: 0;
+}
+.bg-heart::before,
+.bg-heart::after {
+  content: "";
+  width: 280px;
+  height: 280px;
+  background: #ff6f91;
+  border-radius: 50%;
+  position: absolute;
+}
+.bg-heart::before { top: -140px; left: 0; }
+.bg-heart::after { left: 140px; top: 0; }
+
+@keyframes beat {
+  0%,100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.18); }
+}
+
+.container {
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ✨ SLIDE-IN TEXT */
+.line {
+  opacity: 0;
+  transform: translateX(-80px);
+  animation: slideIn 1.2s ease forwards;
+}
+
+@keyframes slideIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 💕 BUTTONS */
+.buttons {
+  position: relative;
+  height: 160px;
+}
+
+button {
+  padding: 14px 34px;
+  font-size: 18px;
+  border-radius: 35px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes {
+  background: white;
+  color: #b3002d;
+}
+
+#no {
+  background: #ffe3ea;
+  color: #b3002d;
+  position: absolute;
+  left: 60%;
+  top: 40px;
+}
+
+/* 💌 SECTIONS */
+.section { display: none; }
+
+.big-love {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.note {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.signature {
+  margin-top: 30px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 26px;
+}
+
+/* 💥 HEART BLAST (STAYS) */
+.blast-heart {
+  position: fixed;
+  z-index: 5;
+  font-size: 26px;
+  opacity: 0.85;
+  pointer-events: none;
+  animation: blastMove 1.2s ease-out forwards;
+}
+
+@keyframes blastMove {
+  from { transform: translateX(0) scale(0.8); }
+  to { transform: translateX(var(--dx)) scale(1.2); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-heart"></div>
+
+<div class="container">
+
+  <!-- QUESTION -->
+  <div id="question">
+    <h1 class="line">Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+      <button id="yes">Yes ❤️</button>
+      <button id="no">No 😝</button>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="step1" class="section">
+    <div class="big-love">
+      <div class="line">I know you love me so much ❤️</div>
+      <div class="line" style="animation-delay:0.4s">Happy Valentine’s Day, bava 💋</div>
+    </div>
+    <button id="more">One More Surprise 💝</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="section note">
+    <div class="line">You are my sunshine ☀️</div>
+    <div class="line" style="animation-delay:0.4s">You made my life beautiful in ways I never imagined.</div>
+    <div class="line" style="animation-delay:0.8s">Every day my love for you keeps increasing.</div>
+    <div class="line" style="animation-delay:1.2s">It will stay the same until my last breath.</div>
+    <div class="line" style="animation-delay:1.6s">I want to live a peaceful and happy life with you.</div>
+    <div class="line" style="animation-delay:2s">Your simle, Your Love and Your Presence make everyday meaningfull for me.</div>
+    <div class="line" style="animation-delay:2.4s">Thank you for coming into my life.</div>
+    <div class="signature line" style="animation-delay:2.8s">— Your Wife ❤️</div>
+  </div>
+
+</div>
+
+<script>
+/* 😝 NO BUTTON MOVEMENT */
+const noBtn = document.getElementById("no");
+
+function moveNo() {
+  const moveX = (Math.random() * 300) - 150;
+  const moveY = (Math.random() * 300) - 150;
+
+  let x = noBtn.offsetLeft + moveX;
+  let y = noBtn.offsetTop + moveY;
+
+  x = Math.max(0, Math.min(window.innerWidth - 120, x));
+  y = Math.max(0, Math.min(200, y));
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+/* 💖 FLOW */
+document.getElementById("yes").onclick = () => {
+  document.getElementById("question").style.display = "none";
+  document.getElementById("step1").style.display = "block";
+};
+
+document.getElementById("more").onclick = () => {
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+  heartBlast();
+};
+
+/* 💥 HEART BLAST THAT STAYS */
+function heartBlast() {
+  for (let i = 0; i < 14; i++) {
+    createHeart("left");
+    createHeart("right");
+  }
+}
+
+function createHeart(side) {
+  const h = document.createElement("div");
+  h.className = "blast-heart";
+  h.innerHTML = "💗";
+  h.style.top = (Math.random() * 80 + 10) + "vh";
+
+  if (side === "left") {
+    h.style.left = "0";
+    h.style.setProperty("--dx", (200 + Math.random() * 200) + "px");
+  } else {
+    h.style.left = "100vw";
+    h.style.setProperty("--dx", "-" + (200 + Math.random() * 200) + "px");
+  }
+
+  document.body.appendChild(h);
+  // ❌ NO REMOVE — HEARTS STAY FOREVER
+}
+</script>
+
+</body>
+</html>
