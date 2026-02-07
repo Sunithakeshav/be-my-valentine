@@ -8,230 +8,151 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap');
 
-body {
-  margin: 0;
-  height: 100vh;
-  background: radial-gradient(circle, #ff4f7b, #b3002d);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  overflow: hidden;
+body{
+  margin:0;height:100vh;
+  background:radial-gradient(circle,#ff4f7b,#b3002d);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;color:white;
+  overflow:hidden;
 }
 
-/* 💗 BACKGROUND BEATING HEART */
-.bg-heart {
-  position: fixed;
-  width: 280px;
-  height: 280px;
-  background: #ff6f91;
-  opacity: 0.18;
-  transform: rotate(-45deg);
-  animation: beat 2s infinite;
-  z-index: 0;
-}
-.bg-heart::before,
-.bg-heart::after {
-  content: "";
-  width: 280px;
-  height: 280px;
-  background: #ff6f91;
-  border-radius: 50%;
-  position: absolute;
-}
-.bg-heart::before { top: -140px; left: 0; }
-.bg-heart::after { left: 140px; top: 0; }
+.container{width:90%;max-width:420px;text-align:center;z-index:2}
+.hidden{display:none}
 
-@keyframes beat {
-  0%,100% { transform: rotate(-45deg) scale(1); }
-  50% { transform: rotate(-45deg) scale(1.18); }
+/* 💗 BACKGROUND HEART */
+.bg-heart{
+  position:fixed;width:280px;height:280px;
+  background:#ff6f91;opacity:.18;
+  transform:rotate(-45deg);
+  animation:beat 2s infinite;
+  z-index:0;
+}
+.bg-heart::before,.bg-heart::after{
+  content:"";width:280px;height:280px;
+  background:#ff6f91;border-radius:50%;
+  position:absolute;
+}
+.bg-heart::before{top:-140px}
+.bg-heart::after{left:140px}
+@keyframes beat{
+  50%{transform:rotate(-45deg) scale(1.18)}
 }
 
-.container {
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
+/* ✨ TEXT */
+.line{opacity:0;transform:translateX(-60px);animation:slide 1.2s forwards}
+@keyframes slide{to{opacity:1;transform:none}}
 
-/* ✨ SLIDE-IN TEXT */
-.line {
-  opacity: 0;
-  transform: translateX(-80px);
-  animation: slideIn 1.2s ease forwards;
-}
+/* BUTTONS */
+.buttons{position:relative;height:150px}
+button{padding:14px 34px;font-size:18px;border-radius:35px;border:none}
+#yes{background:white;color:#b3002d}
+#no{background:#ffe3ea;color:#b3002d;position:absolute;left:60%;top:40px}
 
-@keyframes slideIn {
-  to { opacity: 1; transform: translateX(0); }
-}
+/* 🧸 TEDDY PAGE */
+.teddy-page{background:#ffd6e8;color:#7a0026;padding:40px}
+.teddy{font-size:90px}
+.battery{width:60px;height:110px;border:4px solid #7a0026;margin:auto;position:relative}
+.battery::after{content:"";width:20px;height:8px;background:#7a0026;position:absolute;top:-10px;left:18px}
+.charge{position:absolute;bottom:0;width:100%;height:0;background:#2cff00;transition:height 1.5s}
 
-/* 💕 BUTTONS */
-.buttons {
-  position: relative;
-  height: 160px;
-}
+/* 🎉 PARTY BLAST */
+.party{position:fixed;bottom:-10px;font-size:24px;animation:rise 2.5s forwards}
+@keyframes rise{to{transform:translateY(-120vh) rotate(360deg)}}
 
-button {
-  padding: 14px 34px;
-  font-size: 18px;
-  border-radius: 35px;
-  border: none;
-  cursor: pointer;
-}
+/* FINAL TAG PAGE */
+.final-title{font-family:'Great Vibes',cursive;font-size:42px;margin-bottom:15px}
+.final-tag{font-size:32px;font-weight:bold}
 
-#yes {
-  background: white;
-  color: #b3002d;
-}
-
-#no {
-  background: #ffe3ea;
-  color: #b3002d;
-  position: absolute;
-  left: 60%;
-  top: 40px;
-}
-
-/* 💌 SECTIONS */
-.section { display: none; }
-
-.big-love {
-  font-family: 'Great Vibes', cursive;
-  font-size: 38px;
-  margin-bottom: 20px;
-}
-
-.note {
-  font-size: 16px;
-  line-height: 1.9;
-}
-
-.signature {
-  margin-top: 30px;
-  font-family: 'Great Vibes', cursive;
-  font-size: 26px;
-}
-
-/* 💥 HEART BLAST (STAYS) */
-.blast-heart {
-  position: fixed;
-  z-index: 5;
-  font-size: 26px;
-  opacity: 0.85;
-  pointer-events: none;
-  animation: blastMove 1.2s ease-out forwards;
-}
-
-@keyframes blastMove {
-  from { transform: translateX(0) scale(0.8); }
-  to { transform: translateX(var(--dx)) scale(1.2); }
-}
+/* SUNSHINE PAGE */
+.note{font-size:16px;line-height:1.9}
+.signature{margin-top:20px;font-family:'Great Vibes',cursive;font-size:26px}
 </style>
 </head>
 
 <body>
 
-<div class="bg-heart"></div>
+<div class="bg-heart" id="bgHeart"></div>
 
 <div class="container">
 
-  <!-- QUESTION -->
-  <div id="question">
-    
-    <h1 class="line" style="animation-delay:0s">💖 Yevandoi Sreevaru 💖</h1>
-    <h2 class="line" style="animation-delay:0.4s">💖 Will you be my Valentine? 💖</h2>
-
-    <div class="buttons">
-      <button id="yes">Yes ❤️</button>
-      <button id="no">No 😝</button>
-    </div>
+<!-- PAGE 1 -->
+<div id="page1">
+  <h1 class="line">💖 Yevandoi Sreevaru 💖</h1>
+  <h2 class="line" style="animation-delay:.4s">💖 Will you be my Valentine? 💖</h2>
+  <div class="buttons">
+    <button id="yes">Yes ❤️</button>
+    <button id="no">No 😝</button>
   </div>
+</div>
 
-  <!-- STEP 1 -->
-  <div id="step1" class="section">
-    <div class="big-love">
-      <div class="line">I know you love me so much ❤️</div>
-      <div class="line" style="animation-delay:0.4s">Happy Valentine’s Day, bava 💋</div>
-    </div>
-    <button id="more">One More Surprise 💝</button>
-  </div>
+<!-- PAGE 2 -->
+<div id="page2" class="hidden teddy-page">
+  <div class="teddy">🧸</div>
+  <p>Then hold my heart ♥️♥️</p>
+  <div class="battery" id="battery"><div class="charge" id="charge"></div></div>
+</div>
 
-  <!-- STEP 2 -->
-  <div id="step2" class="section note">
-    <div class="line">You are my sunshine ☀️</div>
-    <div class="line" style="animation-delay:0.4s">You made my life beautiful in ways I never imagined.</div>
-    <div class="line" style="animation-delay:0.8s">Every day my love for you keeps increasing.</div>
-    <div class="line" style="animation-delay:1.2s">It will stay the same until my last breath.</div>
-    <div class="line" style="animation-delay:1.6s">I want to live a peaceful and happy life with you.</div>
-    <div class="line" style="animation-delay:2s">I know sometimes I irritate you 😅</div>
-    <div class="line" style="animation-delay:2.4s">Thank you for bearing me and loving me.</div>
+<!-- PAGE 3 (PARTY + TAG) -->
+<div id="page3" class="hidden">
+  <div class="final-title line">Happy Valentine’s Day My Love</div>
+  <div class="final-tag" id="typeText"></div>
+</div>
 
-    <div class="signature line" style="animation-delay:2.8s">— Your Wife ❤️</div>
-    <div class="signature line" style="animation-delay:3.2s">Sunitha 💖</div>
-  </div>
+<!-- PAGE 4 (SUNSHINE – LAST) -->
+<div id="page4" class="hidden note">
+  <div class="line">You are my sunshine ☀️</div>
+  <div class="line" style="animation-delay:.4s">You made my life beautiful in ways I never imagined.</div>
+  <div class="line" style="animation-delay:.8s">Every day my love for you keeps increasing.</div>
+  <div class="line" style="animation-delay:1.2s">It will stay the same until my last breath.</div>
+  <div class="line" style="animation-delay:1.6s">I want to live a peaceful and happy life with you.</div>
+  <div class="line" style="animation-delay:2s">I know sometimes I irritate you 😅</div>
+  <div class="line" style="animation-delay:2.4s">Thank you for bearing me and loving me.</div>
+  <div class="signature line" style="animation-delay:2.8s">— Your Wife ❤️</div>
+  <div class="signature line" style="animation-delay:3.2s">Sunitha 💖</div>
+</div>
 
 </div>
 
 <script>
-/* 😝 NO BUTTON MOVEMENT */
-const noBtn = document.getElementById("no");
+no.onmouseover=()=>{no.style.left=Math.random()*200+"px";no.style.top=Math.random()*100+"px"}
 
-function moveNo() {
-  const moveX = (Math.random() * 300) - 150;
-  const moveY = (Math.random() * 300) - 150;
-
-  let x = noBtn.offsetLeft + moveX;
-  let y = noBtn.offsetTop + moveY;
-
-  x = Math.max(0, Math.min(window.innerWidth - 120, x));
-  y = Math.max(0, Math.min(200, y));
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+yes.onclick=()=>{
+  page1.classList.add("hidden");
+  bgHeart.style.display="none";
+  page2.classList.remove("hidden");
 }
 
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("mouseover", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
+battery.onmouseenter=battery.onclick=()=>{
+  charge.style.height="100%";
+  setTimeout(()=>{
+    page2.classList.add("hidden");
+    bgHeart.style.display="block";
+    page3.classList.remove("hidden");
+    party();
+    typeText();
+    setTimeout(()=>{
+      page3.classList.add("hidden");
+      page4.classList.remove("hidden");
+    },6000);
+  },1500);
+}
 
-/* 💖 FLOW */
-document.getElementById("yes").onclick = () => {
-  document.getElementById("question").style.display = "none";
-  document.getElementById("step1").style.display = "block";
-};
-
-document.getElementById("more").onclick = () => {
-  document.getElementById("step1").style.display = "none";
-  document.getElementById("step2").style.display = "block";
-  heartBlast();
-};
-
-/* 💥 HEART BLAST THAT STAYS */
-function heartBlast() {
-  for (let i = 0; i < 14; i++) {
-    createHeart("left");
-    createHeart("right");
+function party(){
+  for(let i=0;i<40;i++){
+    let p=document.createElement("div");
+    p.className="party";
+    p.innerHTML=Math.random()>.5?"🎊":"💗";
+    p.style.left=Math.random()*100+"vw";
+    document.body.appendChild(p);
   }
 }
 
-function createHeart(side) {
-  const h = document.createElement("div");
-  h.className = "blast-heart";
-  h.innerHTML = "💗";
-  h.style.top = (Math.random() * 80 + 10) + "vh";
-
-  if (side === "left") {
-    h.style.left = "0";
-    h.style.setProperty("--dx", (200 + Math.random() * 200) + "px");
-  } else {
-    h.style.left = "100vw";
-    h.style.setProperty("--dx", "-" + (200 + Math.random() * 200) + "px");
-  }
-
-  document.body.appendChild(h);
-  // hearts stay till the end ❤️
+function typeText(){
+  const txt="#SK Forever 💖💝";let i=0;
+  const el=document.getElementById("typeText");
+  const t=setInterval(()=>{
+    el.textContent+=txt[i++];if(i===txt.length)clearInterval(t)
+  },120);
 }
 </script>
 
